@@ -6,7 +6,7 @@
 /*   By: khou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 23:28:21 by khou              #+#    #+#             */
-/*   Updated: 2019/03/13 19:35:35 by khou             ###   ########.fr       */
+/*   Updated: 2019/03/13 23:28:05 by khou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int		general_flag(t_hash_flag *flag,int argc, char **argv)
 		{
 			if (*argv[i] == 's')
 			{
-				ft_printf("In general flag meets s\n");
+				flag->s = true;
+//				ft_printf("In general flag meets 's' flag\n");
 				++argv[i];
 				return (i);
 			}
@@ -99,19 +100,29 @@ int		main(int argc, char **argv)
 //	hash_init(&hash);
 //-- error management for argv ----
 	i = general_flag(&hash.flag, argc, argv);//move the pointer of argv
-	if (*argv[i])
-		ft_printf("argv[%i]: %s\n", i, argv[i]);
-	else
+	if (!*argv[i] && hash.flag.s && !hash.flag.p)
 	{
-		ft_printf("end of the argv");
+		ft_printf("%s: option requires an argument -- s\nusage: \
+%s [-pqr] [-s string] [files ...]\n", argv[1], argv[1]);
 		exit (0);
 	}
-	/*
-	while (*argv[i])
+	if (!*argv[i])
 	{
-//		hash_on();//deal with -s 'str' and file
+		ft_printf("ready for reading in from stdin\n");
+        exit(0);
+	}
+	while (i < argc)
+	{
+		ft_printf("flag.s = %d, argv[%i]: %s\n", hash.flag.s, i, argv[i]);
+		if (hash.flag.s)
+		{
+//			hash_str();
+			hash.flag.s = false;
+		}
+		else
+			;//hash_files();//deal with -s 'str' and file
 		i++;
-		}*/
+		}
 	
 	return (0);
 }
