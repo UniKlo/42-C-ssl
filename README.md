@@ -31,12 +31,15 @@ md5 test_foo.txt == echo "foo\n" | md5 // txt file has 2 \n
 echo 'foo' | md5 // is with '\n'
 
 04:
-
+md5 -sfoo -qsfoo
+md5 -sfoo -rqsfoo
+md5 -sfoo -sfoo
+md5 -sfoo test_foo.txt -qsfoo //does not work after file
 
 steps for md5:
-1. handle the flags
-2. validate files (empty)
-3. open file, read file,
-3.1 use gnl to count number of characters written,to get size in char (nbr of char * 4)
+1. handle the flags (kind of working, need to handle STDIN, STR, FILE)
+2. validate files (empty) (DONE)
+3. open file, read file, (DONE)
+3.1 use some variation of gnl to count number of characters written,to get size in char (nbr of char * 4) (counted char, but not bit) 3/15/19
 3.2 when lenght is less than 448, add to 448. more than 448, add to 512 then plus 448.
 the content of the file need to be stored in a str. add unsigned char 128 for start. then NULL

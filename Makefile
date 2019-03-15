@@ -6,7 +6,7 @@
 #    By: khou <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/22 18:08:35 by khou              #+#    #+#              #
-#    Updated: 2019/03/12 18:16:07 by khou             ###   ########.fr        #
+#    Updated: 2019/03/14 12:52:57 by khou             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,7 @@ DIR_S = srcs/
 
 HEADER = ft_ssl.h
 
-SOURCES = main.c
+SOURCES = default.c		main.c	hash_file.c
 
 SRCS = $(addprefix $(DIR_S)/, $(SOURCES))
 

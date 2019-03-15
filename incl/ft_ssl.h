@@ -6,7 +6,7 @@
 /*   By: khou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 23:26:11 by khou              #+#    #+#             */
-/*   Updated: 2019/03/12 18:51:27 by khou             ###   ########.fr       */
+/*   Updated: 2019/03/15 13:34:58 by khou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ typedef struct	s_hash_flag
 typedef	struct	s_hash
 {
 	t_hash_flag	flag;
-	
+	int		len_org;
+	char	*content;
 	
 }t_hash;
 
@@ -47,5 +48,8 @@ typedef	struct	s_hash
 ** -------------------------------- Sources ------------------------------------
 ** -----------------------------------------------------------------------------
 */
+void    hash_init(t_hash *hash);
+void    cmd_flag(t_hash_flag *flag, int argc, char **argv);
+void	hash_file(t_hash *hash, char *cmd, char *file);
 
 #endif
